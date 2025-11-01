@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1655</width>
+    <height>1069</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>4</width>
+    <height>5</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+/* ===========================
+   CRM v2 - Azure Theme (QSS)
+   ===========================
+   Primary: #4A90E2
+   Secondary: #2E4053
+   Background: #F5F7FA
+   Accent: #50E3C2
+   Danger: #E74C3C
+   Success: #27AE60
+   Font: Segoe UI / system sans-serif fallback
+*/
+
+/* Global widget defaults */
+QWidget {
+    background-color: #F5F7FA;
+    color: #2C3E50;
+    font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* ---------- Frames / Cards ---------- */
+QFrame {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #D6DBDF;
+}
+
+/* Centered card with subtle shadow (if using QGraphicsDropShadowEffect it will enhance) */
+QWidget#card, QFrame#card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #E6E9EC;
+}
+
+/* ---------- Labels ---------- */
+QLabel#title, QLabel.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2C3E50;
+}
+
+QLabel#subtitle, QLabel.subtitle {
+    font-size: 12px;
+    color: #6C7A89;
+}
+
+/* Status labels */
+QLabel#error, QLabel#lblLoginStatus.error {
+    color: #E74C3C;
+    font-style: italic;
+    font-size: 12px;
+}
+
+QLabel#success, QLabel#lblLoginStatus.success {
+    color: #27AE60;
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* ---------- Line Edits (Input fields) ---------- */
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D6DD;
+    border-radius: 8px;
+    padding: 8px 10px;
+    selection-background-color: #4A90E2;
+    selection-color: #FFFFFF;
+    outline: none;
+    min-height: 34px;
+}
+
+/* Focused input */
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus {
+    border: 1px solid #4A90E2;
+    box-shadow: none;
+}
+
+/* Placeholder text color (Qt handles placeholder via palette; this helps for preview) */
+QLineEdit[placeholderText=&quot;true&quot;] { color: #B0B0B0; }
+
+/* ---------- Push Buttons ---------- */
+QPushButton {
+    background-color: #4A90E2;
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 8px 14px;
+    min-height: 40px;
+    min-width: 120px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Secondary / ghost button */
+QPushButton[variant=&quot;secondary&quot;] {
+    background-color: transparent;
+    color: #2C3E50;
+    border: 1px solid #D6DBDF;
+}
+
+/* Accent button */
+QPushButton[variant=&quot;accent&quot;] {
+    background-color: #50E3C2;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+/* Danger button */
+QPushButton[variant=&quot;danger&quot;] {
+    background-color: #E74C3C;
+    color: #FFFFFF;
+}
+
+/* Hover and pressed */
+QPushButton:hover {
+    background-color: #357ABD;
+}
+
+QPushButton:pressed {
+    background-color: #2C5E91;
+    padding-top: 2px;
+}
+
+/* Disabled state */
+QPushButton:disabled {
+    background-color: #E9EEF6;
+    color: #9AA7B8;
+    border: 1px solid #E2E8F0;
+}
+
+/* ---------- Table (QTableWidget / QTableView) ---------- */
+QTableWidget, QTableView {
+    background-color: rgba(255,255,255,0.9);
+    border: 1px solid #E6EAEE;
+    border-radius: 8px;
+    gridline-color: #E9EEF2;
+    selection-background-color: #4A90E2;
+    selection-color: #FFFFFF;
+}
+
+/* Header */
+QHeaderView::section {
+    background-color: #4A90E2;
+    color: #FFFFFF;
+    padding: 8px;
+    border: none;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* Alternate row color */
+QTableWidget::item {
+    padding: 6px;
+}
+
+/* ---------- ComboBox ---------- */
+QComboBox {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D6DD;
+    border-radius: 8px;
+    padding: 6px 10px;
+    min-height: 34px;
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 28px;
+    border-left: none;
+}
+QComboBox QAbstractItemView {
+    selection-background-color: #4A90E2;
+}
+
+/* ---------- Scroll Bars (simple, unobtrusive) ---------- */
+QScrollBar:vertical {
+    background: transparent;
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+    background: #D0D6DD;
+    min-height: 20px;
+    border-radius: 5px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #B5C2D6;
+}
+
+/* ---------- Tabs ---------- */
+QTabWidget::pane {
+    border: 1px solid #E6EAEE;
+    border-radius: 8px;
+    background: #FFFFFF;
+}
+QTabBar::tab {
+    background: transparent;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+QTabBar::tab:selected {
+    background: #4A90E2;
+    color: #FFFFFF;
+}
+
+/* ---------- ToolButton (icon buttons) ---------- */
+QToolButton {
+    background: transparent;
+    border: none;
+}
+
+/* ---------- Small helpers ---------- */
+QLabel.subtle {
+    color: #7F8C97;
+    font-size: 12px;
+}
+
+QLabel.muted {
+    color: #95A5A6;
+    font-size: 12px;
+}
+
+/* ---------- Dialog / Message Box overrides ---------- */
+QMessageBox QPushButton {
+    min-width: 100px;
+    min-height: 36px;
+}
+
+/* ---------- Utility classes (use setProperty or objectName to toggle) ---------- */
+/* Example usage in code:
+   lbl.setObjectName(&quot;lblLoginStatus&quot;)
+   lbl.setProperty(&quot;state&quot;, &quot;error&quot;)  -&gt; then use QLabel[state=&quot;error&quot;] { ... }
+*/
+QLabel[state=&quot;error&quot;] {
+    color: #E74C3C;
+}
+QLabel[state=&quot;success&quot;] {
+    color: #27AE60;
+}
+
+/* End of style sheet */
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>450</y>
+      <width>361</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="horizontalSpacing">
+      <number>111</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>50</number>
+     </property>
+     <item row="1" column="0" colspan="2">
+      <widget class="QPushButton" name="mailGonder">
+       <property name="minimumSize">
+        <size>
+         <width>148</width>
+         <height>56</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>-1</pointsize>
+         <italic>true</italic>
+         <bold>true</bold>
+         <strikeout>false</strikeout>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover{background-color: #99B3B7;}
+QPushButton:hover {
+	font-style: italic;
+    color: black;
+    font-size: 19px;
+    font-weight: bold;}</string>
+       </property>
+       <property name="text">
+        <string>SEND MAIL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QPushButton" name="tercihlerAdmin">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>-1</pointsize>
+         <italic>true</italic>
+         <bold>true</bold>
+         <strikeout>false</strikeout>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover{background-color: #99B3B7;}
+QPushButton:hover {
+	font-style: italic;
+    color: black;
+    font-size: 19px;
+    font-weight: bold;}</string>
+       </property>
+       <property name="text">
+        <string>PRERFERENCE ADMIN MENU</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QPushButton" name="exit">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>-1</pointsize>
+         <italic>true</italic>
+         <bold>true</bold>
+         <strikeout>false</strikeout>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover{background-color: #99B3B7;}
+QPushButton:hover {
+	font-style: italic;
+    color: black;
+    font-size: 19px;
+    font-weight: bold;}</string>
+       </property>
+       <property name="text">
+        <string>EXIT</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QPushButton" name="etkinlikButon">
+       <property name="minimumSize">
+        <size>
+         <width>148</width>
+         <height>56</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+         <strikeout>false</strikeout>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover{background-color: #99B3B7;}
+QPushButton:hover {
+	font-style: italic;
+    color: black;
+    font-size: 19px;
+    font-weight: bold;}</string>
+       </property>
+       <property name="text">
+        <string>ACTIVITY CONTROL</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>270</y>
+      <width>1071</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(173, 173, 173);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:72pt; font-weight:900; font-style:italic; color:#1567eb;&quot;&gt;ADMIN MENU&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>450</y>
+      <width>981</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>-1</pointsize>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>33</number>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>244</number>
+    </attribute>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Activity Name</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Start Time</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Participant Mail</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Organizer Mail</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>1651</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1655</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
